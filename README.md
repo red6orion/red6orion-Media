@@ -1,6 +1,6 @@
-<link rel="icon" href="assets/images/favicon.png" type="image/png">
+<link rel="icon" href="assets/images/favicon.png">
 
-# 🚀 Привет, я [Ваше имя]!  
+# 🚀 Привет, я [Алексей]!  
 
 Добро пожаловать на мой сайт-портфолио.  
 

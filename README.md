@@ -5,7 +5,7 @@
     position: fixed;
     width: 50px;
     height: 50px;
-    background-image: url('assets/images/xz1.png');
+    background-image: url('assets/images/xz2.png');
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;

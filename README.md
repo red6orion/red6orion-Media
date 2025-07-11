@@ -1,5 +1,5 @@
-<link rel="icon" href="assets/images/favicon.png" type="image/png">  <!-- Заменить ссылку если favicon лежит в другой папке -->
-
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="assets/css/style.css">
 # 🚀 Привет, я [Ваше имя]!  
 
 Добро пожаловать на мой сайт-портфолио.  
@@ -22,4 +22,4 @@
 ![Пример баннера](https://placehold.co/800x200?text=Hello+World)  <!-- Заменить на свою картинку -->  
 
 ---  
-© 2024 [Ваше имя]. Сайт работает на [GitHub Pages](https://pages.github.com/).  
+© 2025 [Алексей]. Сайт работает на [GitHub Pages](https://pages.github.com/).  

@@ -1,4 +1,4 @@
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/images/favicon.png">
 # 🚀 Привет, я Алексей!  
 
 Добро пожаловать на мой сайт-портфолио.  

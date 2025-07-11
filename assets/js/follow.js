@@ -1,36 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const goose = document.getElementById('follow-goose');
+document.addEventListener('DOMContentLoaded', function() {
+  const follower = document.getElementById('rocket-cursor'); // Или goose-cursor
+  let posX = 0, posY = 0;
   let mouseX = 0, mouseY = 0;
-  let gooseX = 0, gooseY = 0;
-  let isVisible = false;
-
-  // Плавное появление через 2 секунды
-  setTimeout(() => {
-    goose.style.opacity = '1';
-    isVisible = true;
-  }, 2000);
-
-  document.addEventListener('mousemove', (e) => {
+  
+  // Настройки анимации (регулируйте эти значения)
+  const settings = {
+    speed: 0.1,       // Чем меньше (0.01-0.2), тем медленнее (было 0.2)
+    offsetX: 16,      // Смещение по горизонтали
+    offsetY: 16,      // Смещение по вертикали
+    rotationOffset: 90 // Коррекция угла поворота
+  };
+  
+  function followCursor() {
+    // Плавное движение с новой скоростью
+    posX += (mouseX - posX - settings.offsetX) * settings.speed;
+    posY += (mouseY - posY - settings.offsetY) * settings.speed;
+    
+    follower.style.left = posX + 'px';
+    follower.style.top = posY + 'px';
+    
+    requestAnimationFrame(followCursor);
+  }
+  
+  document.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    
+    // Поворот персонажа
+    const angle = Math.atan2(e.movementY, e.movementX) * 180 / Math.PI;
+    follower.style.transform = `rotate(${angle + settings.rotationOffset}deg)`;
   });
-
-  function animate() {
-    if (!isVisible) return;
-
-    // Задержка движения (персонаж отстает от курсора)
-    gooseX += (mouseX - gooseX - 40) * 0.1;
-    gooseY += (mouseY - gooseY - 40) * 0.1;
-
-    goose.style.left = `${gooseX}px`;
-    goose.style.top = `${gooseY}px`;
-
-    // Поворот в направлении движения
-    const angle = Math.atan2(mouseY - gooseY, mouseX - gooseX) * 180 / Math.PI;
-    goose.style.transform = `rotate(${angle}deg)`;
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
+  
+  followCursor();
 });

@@ -1,41 +1,21 @@
 <link rel="icon" href="assets/images/favicon.png">
 
 <style>
-  #custom-cursor-rocket {
+  #follow-goose {
     position: fixed;
-    width: 24px;
-    height: 24px;
+    width: 80px;
+    height: 80px;
     pointer-events: none;
     z-index: 9999;
-    background-image: url('assets/images/favicon.png');
+    background-image: url('assets/images/goose.gif');
     background-size: contain;
-    background-repeat: no-repeat;
-    transition: transform 0.05s ease;
-  }
-  
-  html {
-    cursor: none;
-  }
-  
-  @media (hover: none) {
-    #custom-cursor-rocket, html { cursor: default; }
+    transition: all 0.3s ease;
+    opacity: 0;
   }
 </style>
 
-<div id="custom-cursor-rocket"></div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const rocket = document.getElementById('custom-cursor-rocket');
-    
-    document.addEventListener('mousemove', function(e) {
-      rocket.style.left = (e.pageX + 10) + 'px';
-      rocket.style.top = (e.pageY + 10) + 'px';
-      const angle = Math.atan2(e.movementY, e.movementX) * 180 / Math.PI;
-      rocket.style.transform = `rotate(${angle + 90}deg)`;
-    });
-  });
-</script>
+<div id="follow-goose"></div>
+<script src="assets/js/follow.js"></script>
 
 # 🚀 Привет, я Алексей!  
 

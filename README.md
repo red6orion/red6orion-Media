@@ -1,5 +1,4 @@
-<link rel="icon" href="/red6orion-Media/assets/images/favicon.png">
-
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 # 🚀 Привет, я Алексей!  
 
 Добро пожаловать на мой сайт-портфолио.  

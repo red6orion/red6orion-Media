@@ -40,4 +40,25 @@
   </tr>
 </table>
 
+
+<style>
+  #duck {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-image: url('assets/images/xz2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    left: 0;
+    top: 0;
+    opacity: 0; /* Начально невидим */
+  }
+</style>
+
+<div id="duck"></div>
+<script src="assets/js/follow.js"></script>
+
 [Вернуться на главную →](https://red6orion.github.io/red6orion-Media/)

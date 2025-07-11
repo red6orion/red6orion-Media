@@ -1,5 +1,5 @@
 <link rel="icon" href="assets/images/favicon.png" type="image/png">
-<link rel="stylesheet" href="assets/css/style.css">
+
 # 🚀 Привет, я [Ваше имя]!  
 
 Добро пожаловать на мой сайт-портфолио.  

@@ -5,7 +5,7 @@
     position: fixed;
     width: 60px;
     height: 60px;
-    background-image: url('assets/images/Goose (1).gif');
+    background-image: url('assets/images/Goose(1).gif');
     background-size: contain;
     pointer-events: none;
     z-index: 9999;

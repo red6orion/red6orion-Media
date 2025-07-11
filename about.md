@@ -40,4 +40,4 @@
   </tr>
 </table>
 
-[Вернуться на главную →](https://red6orion.github.io/)
+[Вернуться на главную →](https://red6orion.github.io/red6orion-Media/)

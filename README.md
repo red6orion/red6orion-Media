@@ -5,7 +5,7 @@
     position: fixed;
     width: 32px;
     height: 32px;
-    background-image: url('assets/images/favicon.png');
+    background-image: url('assets/images/goose.gif');
     background-size: contain;
     pointer-events: none;
     z-index: 9999;

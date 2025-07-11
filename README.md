@@ -1,15 +1,15 @@
 <link rel="icon" href="assets/images/favicon.png">
 
 <style>
-  #rocket-cursor {
+  #duck-cursor {
     position: fixed;
-    width: 32px;
-    height: 32px;
-    background-image: url('assets/images/goose1.gif');
+    width: 60px;
+    height: 60px;
+    background-image: url('assets/images/duck.gif');
     background-size: contain;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s ease, left 0.3s ease, top 0.3s ease;
+    transition: transform 0.3s ease; /* Плавность поворота */
   }
 </style>
 

@@ -1,0 +1,49 @@
+[
+  {
+    "x": 0.1,
+    "y": 0.2,
+    "type": "contact",
+    "title": "Телеграм",
+    "description": "Связаться через Telegram",
+    "links": [
+      {
+        "text": "Перейти",
+        "url": "https://t.me/yourusername"
+      }
+    ]
+  },
+  {
+    "x": 0.3,
+    "y": 0.5,
+    "type": "tech",
+    "title": "Технический стек",
+    "description": "JavaScript, HTML, CSS, Node.js",
+    "links": []
+  },
+  {
+    "x": 0.6,
+    "y": 0.4,
+    "type": "project",
+    "title": "Проект 1",
+    "description": "Описание проекта с раскрывающимися деталями",
+    "links": [
+      {
+        "text": "Подробнее",
+        "url": "https://github.com/yourusername/project1"
+      }
+    ]
+  },
+  {
+    "x": 0.8,
+    "y": 0.7,
+    "type": "achievement",
+    "title": "Достижение",
+    "description": "Награда за лучший проект",
+    "links": [
+      {
+        "text": "Подробнее",
+        "url": "https://example.com/achievement"
+      }
+    ]
+  }
+]

@@ -4,7 +4,13 @@
     "y": 0.25,
     "type": "contact",
     "title": "Email",
-    "description": "Свяжитесь со мной по электронной почте: aleksei.ryabochkin@yandex.ru",
+    "description": "Свяжитесь со мной по электронной почте для обсуждения проектов",
+    "links": [
+      {
+        "text": "Написать письмо",
+        "url": "mailto:your.email@example.com"
+      }
+    ]
   },
   {
     "x": 0.85,
@@ -15,7 +21,7 @@
     "links": [
       {
         "text": "Перейти на GitHub",
-        "url": "https://github.com/red6orion"
+        "url": "https://github.com/yourusername"
       }
     ]
   },
@@ -28,7 +34,7 @@
     "links": [
       {
         "text": "Написать в Telegram",
-        "url": "https://t.me/red6orion"
+        "url": "https://t.me/yourusername"
       }
     ]
   },
@@ -36,12 +42,12 @@
     "x": 0.9,
     "y": 0.75,
     "type": "contact",
-    "title": "хз",
+    "title": "LinkedIn",
     "description": "Профессиональная сеть",
     "links": [
       {
-        "text": "хз",
-        "url": "https://t.me/red6orion"
+        "text": "LinkedIn профиль",
+        "url": "https://linkedin.com/in/yourprofile"
       }
     ]
   },
@@ -49,8 +55,67 @@
     "x": 0.5,
     "y": 0.15,
     "type": "tech",
-    "title": "Стэк",
-    "description": "Технический стэк",
+    "title": "JavaScript",
+    "description": "Основной язык программирования для веб-разработки",
     "links": []
+  },
+  {
+    "x": 0.3,
+    "y": 0.4,
+    "type": "tech",
+    "title": "React",
+    "description": "Библиотека для создания пользовательских интерфейсов",
+    "links": []
+  },
+  {
+    "x": 0.7,
+    "y": 0.35,
+    "type": "tech",
+    "title": "Node.js",
+    "description": "Серверная разработка на JavaScript",
+    "links": []
+  },
+  {
+    "x": 0.8,
+    "y": 0.6,
+    "type": "project",
+    "title": "Веб-приложение",
+    "description": "Полнофункциональное веб-приложение с современным интерфейсом",
+    "links": [
+      {
+        "text": "Демо",
+        "url": "https://your-demo-app.com"
+      },
+      {
+        "text": "Код",
+        "url": "https://github.com/yourusername/webapp"
+      }
+    ]
+  },
+  {
+    "x": 0.4,
+    "y": 0.8,
+    "type": "project",
+    "title": "Мобильное приложение",
+    "description": "Кроссплатформенное мобильное приложение",
+    "links": [
+      {
+        "text": "App Store",
+        "url": "https://apps.apple.com/app/yourapp"
+      }
+    ]
+  },
+  {
+    "x": 0.25,
+    "y": 0.15,
+    "type": "achievement",
+    "title": "Сертификация AWS",
+    "description": "Сертифицированный разработчик Amazon Web Services",
+    "links": [
+      {
+        "text": "Подтвердить",
+        "url": "https://aws.amazon.com/verification"
+      }
+    ]
   }
 ]

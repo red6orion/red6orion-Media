@@ -52,44 +52,5 @@
     "title": "Стэк",
     "description": "Технический стэк",
     "links": []
-  },
-  {
-    "x": 0.7,
-    "y": 0.35,
-    "type": "tech",
-    "title": "Проекты",
-    "description": "Мои проекты можете посмотреть здесь",
-    "links": [
-      {
-        "text": "Написать в Telegram",
-        "url": "https://t.me/red6orion"
-      }
-    ]
-  },
-  {
-    "x": 0.8,
-    "y": 0.6,
-    "type": "project",
-    "title": "Мои досижения",
-    "description": "Мои достижения можете посмотреть здесь",
-    "links": [
-      {
-        "text": "тык",
-        "url": "https://t.me/red6orion"
-      }
-    ]
-  },
-  {
-    "x": 0.25,
-    "y": 0.15,
-    "type": "achievement",
-    "title": "хз",
-    "description": "хз",
-    "links": [
-      {
-        "text": "Подтвердить",
-        "url": "https://t.me/red6orion"
-      }
-    ]
   }
 ]

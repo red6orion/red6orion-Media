@@ -15,6 +15,7 @@ body {
   padding: 1rem;
   text-align: center;
   z-index: 10;
+  position: relative;
 }
 
 .nav a {
@@ -22,23 +23,33 @@ body {
   text-decoration: none;
   font-weight: 600;
   margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .nav a:hover {
+  background-color: rgba(102, 204, 255, 0.2);
   text-decoration: underline;
 }
 
 /* Canvas и SVG занимают весь экран */
 #stars-canvas, #starpath-canvas {
   position: absolute;
-  top: 0; left: 0;
+  top: 0; 
+  left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
   z-index: 1;
 }
 
+#stars-canvas {
+  pointer-events: auto;
+  z-index: 2;
+}
+
 #starpath-canvas {
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -52,9 +63,9 @@ body {
 /* Всплывающие подсказки */
 .info-popup {
   position: fixed;
-  background: rgba(20, 20, 40, 0.9);
-  border: 1px solid #66ccff;
-  border-radius: 6px;
+  background: rgba(20, 20, 40, 0.95);
+  border: 2px solid #66ccff;
+  border-radius: 8px;
   padding: 1rem;
   max-width: 300px;
   color: #ccc;
@@ -62,6 +73,8 @@ body {
   pointer-events: none;
   z-index: 20;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(102, 204, 255, 0.3);
 }
 
 .info-popup.hidden {
@@ -69,20 +82,70 @@ body {
   pointer-events: none;
 }
 
+.info-popup strong {
+  color: #66ccff;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 /* Ссылки в подсказках */
+.info-popup .links {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(102, 204, 255, 0.3);
+}
+
 .info-popup .links a {
   color: #66ccff;
   text-decoration: none;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #66ccff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
 }
 
 .info-popup .links a:hover {
-  text-decoration: underline;
+  background-color: #66ccff;
+  color: #0a0a1a;
 }
 
 /* Адаптивность */
 @media (max-width: 600px) {
+  .nav {
+    padding: 0.5rem;
+  }
+  
   .nav a {
     display: block;
     margin: 0.5rem 0;
+    padding: 0.8rem;
+  }
+  
+  .info-popup {
+    max-width: 250px;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .info-popup .links a {
+    display: block;
+    margin: 0.3rem 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .info-popup {
+    max-width: 200px;
+    padding: 0.6rem;
+  }
+  
+  .nav a {
+    font-size: 0.9rem;
   }
 }

@@ -1,0 +1,88 @@
+/* Общие стили и темная тема */
+body {
+  margin: 0;
+  background-color: #0a0a1a;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  background: #111122;
+  padding: 1rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.nav a {
+  color: #66ccff;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 1rem;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Canvas и SVG занимают весь экран */
+#stars-canvas, #starpath-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#starpath-canvas {
+  z-index: 0;
+}
+
+#map-svg {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a1a;
+  display: block;
+}
+
+/* Всплывающие подсказки */
+.info-popup {
+  position: fixed;
+  background: rgba(20, 20, 40, 0.9);
+  border: 1px solid #66ccff;
+  border-radius: 6px;
+  padding: 1rem;
+  max-width: 300px;
+  color: #ccc;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.3s ease;
+}
+
+.info-popup.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Ссылки в подсказках */
+.info-popup .links a {
+  color: #66ccff;
+  text-decoration: none;
+}
+
+.info-popup .links a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}

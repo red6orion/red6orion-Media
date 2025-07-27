@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта узлов - Вторая</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/network.css">
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <h1>Карта узлов</h1>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="second.html" class="active">Вторая карта</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="network-container">
+            <canvas id="networkCanvas"></canvas>
+            <div class="network-controls">
+                <button id="resetZoom">Сбросить масштаб</button>
+                <button id="centerView">Центрировать</button>
+            </div>
+            <div class="network-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Узлы:</span>
+                    <span class="stat-value" id="nodeCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Связи:</span>
+                    <span class="stat-value" id="linkCount">0</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/network.js"></script>
+    <script>
+        // Инициализация карты с данными из второго JSON файла
+        document.addEventListener('DOMContentLoaded', () => {
+            const network = new NetworkVisualization('networkCanvas', 'data/network2.json');
+        });
+    </script>
+</body>
+</html>

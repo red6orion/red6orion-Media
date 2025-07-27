@@ -23,26 +23,6 @@ function debugLog(message, data = null) {
   }
 }
 
-// Функция изменения размера canvas
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  debugLog(`Canvas resized to: ${canvas.width}x${canvas.height}`);
-  
-  // Пересчитываем позиции звёзд при изменении размера
-  stars.forEach(star => {
-    star.updatePosition();
-  });
-  
-  // Пересоздаём фоновые звёзды
-  createBackgroundStars();
-}
-
-// Устанавливаем обработчик изменения размера и инициализируем canvas
-window.addEventListener('resize', resize);
-resize();
-
 // Класс для интерактивных звёзд
 class InteractiveStar {
   constructor(data) {
@@ -102,7 +82,7 @@ class InteractiveStar {
   }
   
   update() {
-    // Обновляем анимацию мерцания
+    // Обновляе�� анимацию мерцания
     this.twinkle += this.twinkleSpeed;
     
     // Плавная анимация размера
@@ -236,7 +216,7 @@ class Meteor {
     this.x += this.vx;
     this.y += this.vy;
     
-    // Добавляем точк�� в след
+    // Добавляем точку в след
     this.trail.push({
       x: this.x,
       y: this.y,
@@ -320,6 +300,30 @@ function createMeteors() {
     meteors.push(new Meteor());
   }
   debugLog(`Created ${METEOR_COUNT} meteors`);
+}
+
+// Эффект клика
+function createClickEffect(x, y) {
+  debugLog(`Creating click effect at (${x}, ${y})`);
+  
+  // Создаём временные частицы для эффекта
+  for (let i = 0; i < 8; i++) {
+    const angle = (i / 8) * Math.PI * 2;
+    const speed = randomRange(2, 5);
+    
+    // Добавляем временный метеорит для эффекта
+    const effect = new Meteor();
+    effect.x = x;
+    effect.y = y;
+    effect.vx = Math.cos(angle) * speed;
+    effect.vy = Math.sin(angle) * speed;
+    effect.length = 20;
+    effect.opacity = 1;
+    effect.fadeSpeed = 0.05;
+    effect.trail = [{ x: x, y: y, opacity: 1 }];
+    
+    meteors.push(effect);
+  }
 }
 
 // Показ информационной подсказки
@@ -438,28 +442,20 @@ function handleClick(e) {
   });
 }
 
-// Эффект клика
-function createClickEffect(x, y) {
-  debugLog(`Creating click effect at (${x}, ${y})`);
+// Функция изменения размера canvas
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   
-  // Создаём временные частицы для эффекта
-  for (let i = 0; i < 8; i++) {
-    const angle = (i / 8) * Math.PI * 2;
-    const speed = randomRange(2, 5);
-    
-    // Добавляем временный метеорит для эффекта
-    const effect = new Meteor();
-    effect.x = x;
-    effect.y = y;
-    effect.vx = Math.cos(angle) * speed;
-    effect.vy = Math.sin(angle) * speed;
-    effect.length = 20;
-    effect.opacity = 1;
-    effect.fadeSpeed = 0.05;
-    effect.trail = [{ x: x, y: y, opacity: 1 }];
-    
-    meteors.push(effect);
-  }
+  debugLog(`Canvas resized to: ${canvas.width}x${canvas.height}`);
+  
+  // Пересчитываем позиции звёзд при изменении размера
+  stars.forEach(star => {
+    star.updatePosition();
+  });
+  
+  // Пересоздаём фоновые звёзды
+  createBackgroundStars();
 }
 
 // Основной цикл анимации
@@ -496,7 +492,7 @@ async function init() {
   try {
     debugLog('Starting initialization...');
     
-    // Проверяем наличие необходимых элементов
+    // Проверяем наличие необходимых ��лементов
     if (!canvas) {
       throw new Error('Canvas element #stars-canvas not found');
     }
@@ -514,7 +510,7 @@ async function init() {
       
       // Создаём интерактивные звёзды
       stars = data.map(starData => {
-        // Проверяем ��орректность данных
+        // Проверяем корректность данных
         if (typeof starData.x !== 'number' || typeof starData.y !== 'number') {
           console.warn('Invalid star coordinates:', starData);
           return null;
@@ -544,7 +540,7 @@ async function init() {
         }),
         new InteractiveStar({
           x: 0.5, y: 0.6, type: 'project',
-          title: 'П��оект', description: 'Мой последний проект',
+          title: 'Проект', description: 'Мой последний проект',
           links: [{ text: 'GitHub', url: 'https://github.com' }]
         })
       ];
@@ -583,6 +579,10 @@ async function init() {
     }
   }
 }
+
+// Устанавливаем обработчик изменения размера и инициализируем canvas
+window.addEventListener('resize', resize);
+resize();
 
 // Очистка при выгрузке страницы
 window.addEventListener('beforeunload', () => {

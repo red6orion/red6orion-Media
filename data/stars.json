@@ -1,89 +1,48 @@
 [
   {
-    "x": 0.15,
-    "y": 0.25,
-    "type": "contact",
-    "title": "Email",
-    "description": "Свяжитесь со мной по электронной почте: aleksei.ryabochkin@yandex.ru",
-  },
-  {
-    "x": 0.85,
+    "x": 0.1,
     "y": 0.2,
     "type": "contact",
-    "title": "GitHub",
-    "description": "Мои проекты и код на GitHub",
+    "title": "Телеграм",
+    "description": "Связаться через Telegram",
     "links": [
       {
-        "text": "Перейти на GitHub",
-        "url": "https://github.com/red6orion"
+        "text": "Перейти",
+        "url": "https://t.me/yourusername"
       }
     ]
   },
   {
-    "x": 0.1,
-    "y": 0.7,
-    "type": "contact",
-    "title": "Telegram",
-    "description": "Быстрая связь через мессенджер",
-    "links": [
-      {
-        "text": "Написать в Telegram",
-        "url": "https://t.me/red6orion"
-      }
-    ]
-  },
-  {
-    "x": 0.9,
-    "y": 0.75,
-    "type": "contact",
-    "title": "LinkedIn",
-    "description": "Профессиональная сеть",
-    "links": [
-      {
-        "text": "LinkedIn профиль",
-        "url": "https://linkedin.com/in/yourprofile"
-      }
-    ]
-  },
-  {
-    "x": 0.5,
-    "y": 0.15,
+    "x": 0.3,
+    "y": 0.5,
     "type": "tech",
-    "title": "Стэк",
-    "description": "Технический стэк",
+    "title": "Технический стек",
+    "description": "JavaScript, HTML, CSS, Node.js",
     "links": []
   },
   {
-    "x": 0.7,
-    "y": 0.35,
-    "type": "tech",
-    "title": "Проекты",
-    "description": "Мои проекты можете посмотреть здесь",
-    "links": []
+    "x": 0.6,
+    "y": 0.4,
+    "type": "project",
+    "title": "Проект 1",
+    "description": "Описание проекта с раскрывающимися деталями",
+    "links": [
+      {
+        "text": "Подробнее",
+        "url": "https://github.com/yourusername/project1"
+      }
+    ]
   },
   {
     "x": 0.8,
-    "y": 0.6,
-    "type": "project",
-    "title": "Мои досижения",
-    "description": "Мои достижения можете посмотреть здесь",
-    "links": [
-      {
-        "text": "тык",
-        "url": ""
-      }
-    ]
-  },
-  {
-    "x": 0.25,
-    "y": 0.15,
+    "y": 0.7,
     "type": "achievement",
-    "title": "",
-    "description": "",
+    "title": "Достижение",
+    "description": "Награда за лучший проект",
     "links": [
       {
-        "text": "Подтвердить",
-        "url": ""
+        "text": "Подробнее",
+        "url": "https://example.com/achievement"
       }
     ]
   }

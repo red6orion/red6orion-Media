@@ -5,5 +5,86 @@
     "type": "contact",
     "title": "Email",
     "description": "Свяжитесь со мной по электронной почте: aleksei.ryabochkin@yandex.ru",
+  },
+  {
+    "x": 0.85,
+    "y": 0.2,
+    "type": "contact",
+    "title": "GitHub",
+    "description": "Мои проекты и код на GitHub",
+    "links": [
+      {
+        "text": "Перейти на GitHub",
+        "url": "https://github.com/red6orion"
+      }
+    ]
+  },
+  {
+    "x": 0.1,
+    "y": 0.7,
+    "type": "contact",
+    "title": "Telegram",
+    "description": "Быстрая связь через мессенджер",
+    "links": [
+      {
+        "text": "Написать в Telegram",
+        "url": "https://t.me/red6orion"
+      }
+    ]
+  },
+  {
+    "x": 0.9,
+    "y": 0.75,
+    "type": "contact",
+    "title": "LinkedIn",
+    "description": "Профессиональная сеть",
+    "links": [
+      {
+        "text": "LinkedIn профиль",
+        "url": "https://linkedin.com/in/yourprofile"
+      }
+    ]
+  },
+  {
+    "x": 0.5,
+    "y": 0.15,
+    "type": "tech",
+    "title": "Стэк",
+    "description": "Технический стэк",
+    "links": []
+  },
+  {
+    "x": 0.7,
+    "y": 0.35,
+    "type": "tech",
+    "title": "Проекты",
+    "description": "Мои проекты можете посмотреть здесь",
+    "links": []
+  },
+  {
+    "x": 0.8,
+    "y": 0.6,
+    "type": "project",
+    "title": "Мои досижения",
+    "description": "Мои достижения можете посмотреть здесь",
+    "links": [
+      {
+        "text": "тык",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "x": 0.25,
+    "y": 0.15,
+    "type": "achievement",
+    "title": "",
+    "description": "",
+    "links": [
+      {
+        "text": "Подтвердить",
+        "url": ""
+      }
+    ]
   }
 ]

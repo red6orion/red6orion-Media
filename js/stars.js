@@ -450,7 +450,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseLeave() {
-  // Если табличка закреплена, не скрываем её
+  // Если табличка закреп��ена, не скрываем её
   if (isPinned) {
     return;
   }

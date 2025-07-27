@@ -1,50 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивная карта узлов - Главная</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/network.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Главная — Звёздное небо</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <header>
-        <nav class="navigation">
-            <h1>Карта узлов</h1>
-            <ul>
-                <li><a href="index.html" class="active">Главная</a></li>
-                <li><a href="second.html">Вторая карта</a></li>
-            </ul>
-        </nav>
-    </header>
+  <nav class="nav">
+    <a href="second.html">Интерактивная карта</a>
+  </nav>
 
-    <main>
-        <div class="network-container">
-            <canvas id="networkCanvas"></canvas>
-            <div class="network-controls">
-                <button id="resetZoom">Сбросить масштаб</button>
-                <button id="centerView">Центрировать</button>
-            </div>
-            <div class="network-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Узлы:</span>
-                    <span class="stat-value" id="nodeCount">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Связи:</span>
-                    <span class="stat-value" id="linkCount">0</span>
-                </div>
-            </div>
-        </div>
-    </main>
+  <canvas id="stars-canvas"></canvas>
+  <canvas id="starpath-canvas"></canvas>
 
-    <script src="js/utils.js"></script>
-    <script src="js/network.js"></script>
-    <script>
-        // Инициализация карты с данными из первого JSON файла
-        document.addEventListener('DOMContentLoaded', () => {
-            const network = new NetworkVisualization('networkCanvas', 'data/network1.json');
-        });
-    </script>
+  <div id="info-popup" class="info-popup hidden"></div>
+
+  <script src="js/utils.js" type="module"></script>
+  <script src="js/stars.js" type="module"></script>
+  <script src="js/starpath.js" type="module"></script>
 </body>
 </html>

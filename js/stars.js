@@ -310,7 +310,7 @@ function createMeteors() {
   debugLog(`Created ${METEOR_COUNT} meteors`);
 }
 
-// Э��фект клика
+// Эффект клика
 function createClickEffect(x, y) {
   debugLog(`Creating click effect at (${x}, ${y})`);
   
@@ -497,7 +497,7 @@ function handleClick(e) {
 function handleDocumentClick(e) {
   if (!isPinned) return;
   
-  // Проверяем, был ли клик по canvas или по всплывающей табли��ке
+  // Проверяем, был ли клик по canvas или по всплывающей табличке
   const clickedOnCanvas = e.target === canvas;
   const clickedOnPopup = infoPopup.contains(e.target);
   

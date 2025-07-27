@@ -1,48 +1,94 @@
 [
   {
-    "x": 0.1,
+    "x": 0.15,
+    "y": 0.25,
+    "type": "contact",
+    "title": "Email",
+    "description": "Свяжитесь со мной по электронной почте: aleksei.ryabochkin@yandex.ru",
+  },
+  {
+    "x": 0.85,
     "y": 0.2,
     "type": "contact",
-    "title": "Телеграм",
-    "description": "Связаться через Telegram",
+    "title": "GitHub",
+    "description": "Мои проекты и код на GitHub",
     "links": [
       {
-        "text": "Перейти",
-        "url": "https://t.me/yourusername"
+        "text": "Перейти на GitHub",
+        "url": "https://github.com/red6orion"
       }
     ]
   },
   {
-    "x": 0.3,
-    "y": 0.5,
+    "x": 0.1,
+    "y": 0.7,
+    "type": "contact",
+    "title": "Telegram",
+    "description": "Быстрая связь через мессенджер",
+    "links": [
+      {
+        "text": "Написать в Telegram",
+        "url": "https://t.me/red6orion"
+      }
+    ]
+  },
+  {
+    "x": 0.9,
+    "y": 0.75,
+    "type": "contact",
+    "title": "хз",
+    "description": "Профессиональная сеть",
+    "links": [
+      {
+        "text": "хз",
+        "url": "https://t.me/red6orion"
+      }
+    ]
+  },
+  {
+    "x": 0.5,
+    "y": 0.15,
     "type": "tech",
-    "title": "Технический стек",
-    "description": "JavaScript, HTML, CSS, Node.js",
+    "title": "Стэк",
+    "description": "Технический стэк",
     "links": []
   },
   {
-    "x": 0.6,
-    "y": 0.4,
-    "type": "project",
-    "title": "Проект 1",
-    "description": "Описание проекта с раскрывающимися деталями",
+    "x": 0.7,
+    "y": 0.35,
+    "type": "tech",
+    "title": "Проекты",
+    "description": "Мои проекты можете посмотреть здесь",
     "links": [
       {
-        "text": "Подробнее",
-        "url": "https://github.com/yourusername/project1"
+        "text": "Написать в Telegram",
+        "url": "https://t.me/red6orion"
       }
     ]
   },
   {
     "x": 0.8,
-    "y": 0.7,
-    "type": "achievement",
-    "title": "Достижение",
-    "description": "Награда за лучший проект",
+    "y": 0.6,
+    "type": "project",
+    "title": "Мои досижения",
+    "description": "Мои достижения можете посмотреть здесь",
     "links": [
       {
-        "text": "Подробнее",
-        "url": "https://example.com/achievement"
+        "text": "тык",
+        "url": "https://t.me/red6orion"
+      }
+    ]
+  },
+  {
+    "x": 0.25,
+    "y": 0.15,
+    "type": "achievement",
+    "title": "хз",
+    "description": "хз",
+    "links": [
+      {
+        "text": "Подтвердить",
+        "url": "https://t.me/red6orion"
       }
     ]
   }

@@ -11,10 +11,6 @@ let meteors = [];
 let backgroundStars = [];
 let animationId = null;
 
-// Состояние всплывающей таблички
-let pinnedStar = null; // Звезда, для которой закреплена табличка
-let isPinned = false; // Флаг закреплённого состояния
-
 // Настройки
 const METEOR_COUNT = 3;
 const BACKGROUND_STARS_COUNT = 150;
@@ -86,7 +82,7 @@ class InteractiveStar {
   }
   
   update() {
-    // Обновляем анимацию мерцания
+    // Обновляе�� анимацию мерцания
     this.twinkle += this.twinkleSpeed;
     
     // Плавная анимация размера
@@ -96,7 +92,7 @@ class InteractiveStar {
     this.glowIntensity += (this.targetGlowIntensity - this.glowIntensity) * 0.15;
     
     // Устанавливаем целевые значения в зависимости от состояния
-    if (this.hovered || (isPinned && pinnedStar === this)) {
+    if (this.hovered) {
       this.targetRadius = this.baseRadius * 2.5;
       this.targetGlowIntensity = 1;
     } else {
@@ -110,7 +106,7 @@ class InteractiveStar {
     
     ctx.save();
     
-    // Свечение при наведении или закреплении
+    // Свечение при наведении
     if (this.glowIntensity > 0) {
       ctx.shadowColor = this.color;
       ctx.shadowBlur = 25 * this.glowIntensity;
@@ -123,8 +119,8 @@ class InteractiveStar {
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
     
-    // Дополнительное свечение в центре при наведении или закреплении
-    if (this.hovered || (isPinned && pinnedStar === this)) {
+    // Дополнительное свечение в центре при наведении
+    if (this.hovered) {
       ctx.globalAlpha = 0.8;
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
@@ -142,8 +138,6 @@ class InteractiveStar {
     return dx * dx + dy * dy <= hitRadius * hitRadius;
   }
 }
-
-// ... existing code ... (BackgroundStar и Meteor классы остаются без изменений)
 
 // Класс для фоновых звёзд
 class BackgroundStar {
@@ -290,8 +284,6 @@ class Meteor {
   }
 }
 
-// ... existing code ... (createBackgroundStars и createMeteors остаются без изменений)
-
 // Создание фоновых звёзд
 function createBackgroundStars() {
   backgroundStars = [];
@@ -335,11 +327,9 @@ function createClickEffect(x, y) {
 }
 
 // Показ информационной подсказки
-function showInfo(star, mouseX, mouseY, pinned = false) {
+function showInfo(star, mouseX, mouseY) {
   if (!star) {
-    if (!isPinned) {
-      infoPopup.classList.add('hidden');
-    }
+    infoPopup.classList.add('hidden');
     return;
   }
   
@@ -388,40 +378,13 @@ function showInfo(star, mouseX, mouseY, pinned = false) {
   
   infoPopup.style.left = left + 'px';
   infoPopup.style.top = top + 'px';
-  
-  // Управляем состоянием закрепления
-  if (pinned) {
-    infoPopup.classList.add('pinned');
-    infoPopup.style.pointerEvents = 'auto'; // Разрешаем клики по ссылкам
-    isPinned = true;
-    pinnedStar = star;
-  } else if (!isPinned) {
-    infoPopup.classList.remove('pinned');
-    infoPopup.style.pointerEvents = 'none';
-  }
-  
   infoPopup.classList.remove('hidden');
   
-  debugLog(`Showing info for: ${star.title} at (${left}, ${top}), pinned: ${pinned}`);
-}
-
-// Скрытие всплывающей таблички
-function hideInfo() {
-  infoPopup.classList.add('hidden');
-  infoPopup.classList.remove('pinned');
-  infoPopup.style.pointerEvents = 'none';
-  isPinned = false;
-  pinnedStar = null;
-  debugLog('Info popup hidden');
+  debugLog(`Showing info for: ${star.title} at (${left}, ${top})`);
 }
 
 // Обработчики событий мыши
 function handleMouseMove(e) {
-  // Если табличка закреплена, не показываем hover-эффекты
-  if (isPinned) {
-    return;
-  }
-  
   const rect = canvas.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
@@ -442,7 +405,7 @@ function handleMouseMove(e) {
   });
   
   if (foundHover && hoveredStar) {
-    showInfo(hoveredStar, e.clientX, e.clientY, false);
+    showInfo(hoveredStar, e.clientX, e.clientY);
   } else {
     showInfo(null);
     canvas.style.cursor = 'default';
@@ -450,11 +413,6 @@ function handleMouseMove(e) {
 }
 
 function handleMouseLeave() {
-  // Если табличка закреп��ена, не скрываем её
-  if (isPinned) {
-    return;
-  }
-  
   stars.forEach(star => {
     star.hovered = false;
   });
@@ -468,46 +426,21 @@ function handleClick(e) {
   const mouseX = e.clientX - rect.left;
   const mouseY = e.clientY - rect.top;
   
-  let clickedStar = null;
-  
   // Проверяем клик по звёздам
   stars.forEach(star => {
     if (star.isPointInside(mouseX, mouseY)) {
-      clickedStar = star;
+      debugLog(`Clicked on star: ${star.title}`);
+      
+      // Если у звезды только одна ссылка, открываем её сразу
+      if (star.links.length === 1) {
+        window.open(star.links[0].url, '_blank');
+      }
+      
+      // Создаём эффект клика
+      createClickEffect(mouseX, mouseY);
     }
   });
-  
-  if (clickedStar) {
-    debugLog(`Clicked on star: ${clickedStar.title}`);
-    
-    // Если кликнули на уже закреплённую звезду, скрываем табличку
-    if (isPinned && pinnedStar === clickedStar) {
-      hideInfo();
-    } else {
-      // Закрепляем табличку для новой звезды
-      showInfo(clickedStar, e.clientX, e.clientY, true);
-    }
-    
-    // Создаём эффект клика
-    createClickEffect(mouseX, mouseY);
-  }
 }
-
-// Обработчик клика по документу для скрытия таблички при клике вне её
-function handleDocumentClick(e) {
-  if (!isPinned) return;
-  
-  // Проверяем, был ли клик по canvas или по всплывающей табличке
-  const clickedOnCanvas = e.target === canvas;
-  const clickedOnPopup = infoPopup.contains(e.target);
-  
-  // Если клик был не по canvas и не по табличке, скрываем её
-  if (!clickedOnCanvas && !clickedOnPopup) {
-    hideInfo();
-  }
-}
-
-// ... existing code ... (resize функция остается без изменений)
 
 // Функция изменения размера canvas
 function resize() {
@@ -524,8 +457,6 @@ function resize() {
   // Пересоздаём фоновые звёзды
   createBackgroundStars();
 }
-
-// ... existing code ... (animate функция остается без изменений)
 
 // Основной цикл анимации
 function animate() {
@@ -561,7 +492,7 @@ async function init() {
   try {
     debugLog('Starting initialization...');
     
-    // Проверяем наличие необходимых элементов
+    // Проверяем наличие необходимых ��лементов
     if (!canvas) {
       throw new Error('Canvas element #stars-canvas not found');
     }
@@ -626,9 +557,6 @@ async function init() {
     canvas.addEventListener('mouseleave', handleMouseLeave);
     canvas.addEventListener('click', handleClick);
     
-    // Добавляем обработчик клика по документу
-    document.addEventListener('click', handleDocumentClick);
-    
     // Включаем pointer-events для canvas
     canvas.style.pointerEvents = 'auto';
     
@@ -661,9 +589,6 @@ window.addEventListener('beforeunload', () => {
   if (animationId) {
     cancelAnimationFrame(animationId);
   }
-  
-  // Удаляем обработчик клика по документу
-  document.removeEventListener('click', handleDocumentClick);
 });
 
 // Запускаем инициализацию после загрузки DOM

@@ -60,7 +60,7 @@ body {
   display: block;
 }
 
-/* Всплывающие подсказки */
+/* Вспл��вающие подсказки */
 .info-popup {
   position: fixed;
   background: rgba(20, 20, 40, 0.95);
@@ -72,14 +72,52 @@ body {
   font-size: 0.9rem;
   pointer-events: none;
   z-index: 20;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(102, 204, 255, 0.3);
+  transform: scale(0.95);
 }
 
 .info-popup.hidden {
   opacity: 0;
   pointer-events: none;
+  transform: scale(0.9);
+}
+
+.info-popup:not(.hidden) {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Закреплённое состояние всплывающей таблички */
+.info-popup.pinned {
+  pointer-events: auto !important;
+  background: rgba(20, 20, 40, 0.98);
+  border-color: #66ccff;
+  box-shadow: 0 8px 32px rgba(102, 204, 255, 0.4);
+  transform: scale(1.02);
+}
+
+.info-popup.pinned::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #66ccff, #4da6d9, #66ccff);
+  border-radius: 10px;
+  z-index: -1;
+  animation: borderGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 
 .info-popup strong {
@@ -101,6 +139,14 @@ body {
   text-decoration: none;
   display: inline-block;
   margin-right: 1rem;
+  margin-bottom: 0.3```css:css/styles.css
+/* ... existing code ... */
+
+.info-popup .links a {
+  color: #66ccff;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 1rem;
   margin-bottom: 0.3rem;
   padding: 0.3rem 0.6rem;
   border: 1px solid #66ccff;
@@ -112,6 +158,21 @@ body {
 .info-popup .links a:hover {
   background-color: #66ccff;
   color: #0a0a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 204, 255, 0.4);
+}
+
+/* Улучшенные стили для закреплённых ссылок */
+.info-popup.pinned .links a {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.info-popup.pinned .links a:hover {
+  background-color: #66ccff;
+  color: #0a0a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 204, 255, 0.6);
 }
 
 /* Адаптивность */

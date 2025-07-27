@@ -4,13 +4,7 @@
     "y": 0.25,
     "type": "contact",
     "title": "Email",
-    "description": "Свяжитесь со мной по электронной почте",
-    "links": [
-      {
-        "text": "Написать письмо",
-        "url": "aleksei.ryabochkin@yandex.ru"
-      }
-    ]
+    "description": "Свяжитесь со мной по электронной почте: aleksei.ryabochkin@yandex.ru",
   },
   {
     "x": 0.85,
@@ -21,7 +15,7 @@
     "links": [
       {
         "text": "Перейти на GitHub",
-        "url": "https://github.com/yourusername"
+        "url": "https://github.com/red6orion"
       }
     ]
   },

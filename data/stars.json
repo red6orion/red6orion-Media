@@ -4,11 +4,11 @@
     "y": 0.25,
     "type": "contact",
     "title": "Email",
-    "description": "Свяжитесь со мной по электронной почте для обсуждения проектов",
+    "description": "Свяжитесь со мной по электронной почте",
     "links": [
       {
         "text": "Написать письмо",
-        "url": "mailto:your.email@example.com"
+        "url": "aleksei.ryabochkin@yandex.ru"
       }
     ]
   },
@@ -34,7 +34,7 @@
     "links": [
       {
         "text": "Написать в Telegram",
-        "url": "https://t.me/yourusername"
+        "url": "https://t.me/red6orion"
       }
     ]
   },
@@ -55,66 +55,41 @@
     "x": 0.5,
     "y": 0.15,
     "type": "tech",
-    "title": "JavaScript",
-    "description": "Основной язык программирования для веб-разработки",
-    "links": []
-  },
-  {
-    "x": 0.3,
-    "y": 0.4,
-    "type": "tech",
-    "title": "React",
-    "description": "Библиотека для создания пользовательских интерфейсов",
+    "title": "Стэк",
+    "description": "Технический стэк",
     "links": []
   },
   {
     "x": 0.7,
     "y": 0.35,
     "type": "tech",
-    "title": "Node.js",
-    "description": "Серверная разработка на JavaScript",
+    "title": "Проекты",
+    "description": "Мои проекты можете посмотреть здесь",
     "links": []
   },
   {
     "x": 0.8,
     "y": 0.6,
     "type": "project",
-    "title": "Веб-приложение",
-    "description": "Полнофункциональное веб-приложение с современным интерфейсом",
+    "title": "Мои досижения",
+    "description": "Мои достижения можете посмотреть здесь",
     "links": [
       {
-        "text": "Демо",
-        "url": "https://your-demo-app.com"
+        "text": "тык",
+        "url": ""
       },
-      {
-        "text": "Код",
-        "url": "https://github.com/yourusername/webapp"
-      }
-    ]
-  },
-  {
-    "x": 0.4,
-    "y": 0.8,
-    "type": "project",
-    "title": "Мобильное приложение",
-    "description": "Кроссплатформенное мобильное приложение",
-    "links": [
-      {
-        "text": "App Store",
-        "url": "https://apps.apple.com/app/yourapp"
-      }
     ]
   },
   {
     "x": 0.25,
     "y": 0.15,
     "type": "achievement",
-    "title": "Сертификация AWS",
-    "description": "Сертифицированный разработчик Amazon Web Services",
+    "title": "",
+    "description": "",
     "links": [
       {
         "text": "Подтвердить",
-        "url": "https://aws.amazon.com/verification"
+        "url": ""
       }
     ]
   }

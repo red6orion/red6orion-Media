@@ -4,7 +4,7 @@
     "y": 0.25,
     "type": "contact",
     "title": "Email",
-    "description": "Свяжитесь со мной по электронной почте для обсуждения проектов и сотрудничества",
+    "description": "Свяжитесь со мной по электронной почте для обсуждения проектов",
     "links": [
       {
         "text": "Написать письмо",
@@ -17,7 +17,7 @@
     "y": 0.2,
     "type": "contact",
     "title": "GitHub",
-    "description": "Мои проекты и код на GitHub. Здесь вы найдёте открытые репозитории и примеры работ",
+    "description": "Мои проекты и код на GitHub",
     "links": [
       {
         "text": "Перейти на GitHub",
@@ -30,7 +30,7 @@
     "y": 0.7,
     "type": "contact",
     "title": "Telegram",
-    "description": "Быстрая связь через мессенджер для оперативного общения",
+    "description": "Быстрая связь через мессенджер",
     "links": [
       {
         "text": "Написать в Telegram",
@@ -43,7 +43,7 @@
     "y": 0.75,
     "type": "contact",
     "title": "LinkedIn",
-    "description": "Профессиональная сеть и карьерная и��формация",
+    "description": "Профессиональная сеть",
     "links": [
       {
         "text": "LinkedIn профиль",
@@ -56,7 +56,7 @@
     "y": 0.15,
     "type": "tech",
     "title": "JavaScript",
-    "description": "Основной язык программирования для фронтенд и бэкенд разработки",
+    "description": "Основной язык программирования для веб-разработки",
     "links": []
   },
   {
@@ -76,19 +76,11 @@
     "links": []
   },
   {
-    "x": 0.2,
-    "y": 0.6,
-    "type": "tech",
-    "title": "Python",
-    "description": "Универсальный язык для веб-разработки и анализа данных",
-    "links": []
-  },
-  {
     "x": 0.8,
     "y": 0.6,
     "type": "project",
     "title": "Веб-приложение",
-    "description": "Полнофункциональное веб-приложение с современным интерфе��сом",
+    "description": "Полнофункциональное веб-приложение с современным интерфейсом",
     "links": [
       {
         "text": "Демо",
@@ -114,23 +106,6 @@
     ]
   },
   {
-    "x": 0.6,
-    "y": 0.25,
-    "type": "project",
-    "title": "Open Source библиотека",
-    "description": "Популярная JavaScript библиотека",
-    "links": [
-      {
-        "text": "NPM",
-        "url": "https://npmjs.com/package/your-library"
-      },
-      {
-        "text": "Документация",
-        "url": "https://your-library-docs.com"
-      }
-    ]
-  },
-  {
     "x": 0.25,
     "y": 0.15,
     "type": "achievement",
@@ -140,27 +115,6 @@
       {
         "text": "Подтвердить",
         "url": "https://aws.amazon.com/verification"
-      }
-    ]
-  },
-  {
-    "x": 0.75,
-    "y": 0.85,
-    "type": "achievement",
-    "title": "Хакатон 2023",
-    "description": "Победитель международного хакатона",
-    "links": []
-  },
-  {
-    "x": 0.45,
-    "y": 0.5,
-    "type": "achievement",
-    "title": "Спикер конференций",
-    "description": "Выступления на технических конференциях",
-    "links": [
-      {
-        "text": "Видео",
-        "url": "https://youtube.com/playlist?list=yourplaylist"
       }
     ]
   }

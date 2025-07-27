@@ -8,7 +8,7 @@ function resize() {
 window.addEventListener('resize', resize);
 resize();
 
-const text = "Привет! Я — [Ваше имя]. Добро пожаловать в мой звёздный путь.";
+const text = "Привет! Я — Алексей. Добро пожаловать в мой звёздный путь. Здесь вы можете узнать ифнормацию про меня";
 let offsetX = canvas.width;
 const speed = 1;
 

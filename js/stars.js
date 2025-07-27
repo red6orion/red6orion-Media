@@ -1,21 +1,34 @@
 import { randomRange, loadJSON } from './utils.js';
 
+// Получаем элементы DOM
 const canvas = document.getElementById('stars-canvas');
 const ctx = canvas.getContext('2d');
+const infoPopup = document.getElementById('info-popup');
+
+// Массивы для хранения объектов
 let stars = [];
 let meteors = [];
 let backgroundStars = [];
-let infoPopup = document.getElementById('info-popup');
 let animationId = null;
 
 // Настройки
 const METEOR_COUNT = 3;
-const BACKGROUND_STARS_COUNT = 200;
-const METEOR_SPAWN_INTERVAL = 3000; // 3 секунды
+const BACKGROUND_STARS_COUNT = 150;
+const DEBUG = true; // Включаем отладку
 
+// Функция для логирования отладочной информации
+function debugLog(message, data = null) {
+  if (DEBUG) {
+    console.log(`[Stars Debug] ${message}`, data || '');
+  }
+}
+
+// Функция изменения размера canvas
 function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  
+  debugLog(`Canvas resized to: ${canvas.width}x${canvas.height}`);
   
   // Пересчитываем позиции звёзд при изменении размера
   stars.forEach(star => {
@@ -26,6 +39,7 @@ function resize() {
   createBackgroundStars();
 }
 
+// Устанавливаем обработчик изменения размера и инициализируем canvas
 window.addEventListener('resize', resize);
 resize();
 
@@ -33,7 +47,7 @@ resize();
 class InteractiveStar {
   constructor(data) {
     this.data = data;
-    this.relativeX = data.x;
+    this.relativeX = data.x; // Относительные координаты (0-1)
     this.relativeY = data.y;
     this.type = data.type;
     this.title = data.title;
@@ -53,21 +67,25 @@ class InteractiveStar {
     this.twinkle = Math.random() * Math.PI * 2;
     this.twinkleSpeed = randomRange(0.01, 0.03);
     
+    // Вычисляем абсолютные координаты
     this.updatePosition();
+    
+    debugLog(`Created star: ${this.title} at (${this.x}, ${this.y})`);
   }
   
   updatePosition() {
+    // Преобразуем относительные координаты в абсолютные
     this.x = this.relativeX * canvas.width;
     this.y = this.relativeY * canvas.height;
   }
   
   getRadiusByType() {
     const sizes = {
-      contact: 4,
-      tech: 3,
-      project: 5,
-      achievement: 4,
-      default: 3
+      contact: 5,
+      tech: 4,
+      project: 6,
+      achievement: 5,
+      default: 4
     };
     return sizes[this.type] || sizes.default;
   }
@@ -88,14 +106,14 @@ class InteractiveStar {
     this.twinkle += this.twinkleSpeed;
     
     // Плавная анимация размера
-    this.radius += (this.targetRadius - this.radius) * 0.1;
+    this.radius += (this.targetRadius - this.radius) * 0.15;
     
     // Плавная анимация свечения
-    this.glowIntensity += (this.targetGlowIntensity - this.glowIntensity) * 0.1;
+    this.glowIntensity += (this.targetGlowIntensity - this.glowIntensity) * 0.15;
     
     // Устанавливаем целевые значения в зависимости от состояния
     if (this.hovered) {
-      this.targetRadius = this.baseRadius * 2;
+      this.targetRadius = this.baseRadius * 2.5;
       this.targetGlowIntensity = 1;
     } else {
       this.targetRadius = this.baseRadius;
@@ -104,14 +122,14 @@ class InteractiveStar {
   }
   
   draw() {
-    const twinkleIntensity = Math.sin(this.twinkle) * 0.2 + 0.8;
+    const twinkleIntensity = Math.sin(this.twinkle) * 0.3 + 0.7;
     
     ctx.save();
     
     // Свечение при наведении
     if (this.glowIntensity > 0) {
       ctx.shadowColor = this.color;
-      ctx.shadowBlur = 20 * this.glowIntensity;
+      ctx.shadowBlur = 25 * this.glowIntensity;
     }
     
     // Основная звезда
@@ -121,9 +139,9 @@ class InteractiveStar {
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
     
-    // Дополнительное свечение в центре
+    // Дополнительное свечение в центре при наведении
     if (this.hovered) {
-      ctx.globalAlpha = 0.6;
+      ctx.globalAlpha = 0.8;
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius * 0.4, 0, Math.PI * 2);
@@ -136,7 +154,7 @@ class InteractiveStar {
   isPointInside(px, py) {
     const dx = px - this.x;
     const dy = py - this.y;
-    const hitRadius = Math.max(this.radius + 10, 15); // Минимальная область клика
+    const hitRadius = Math.max(this.radius + 15, 20); // Увеличенная область для клика
     return dx * dx + dy * dy <= hitRadius * hitRadius;
   }
 }
@@ -146,8 +164,8 @@ class BackgroundStar {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.radius = randomRange(0.5, 2);
-    this.opacity = randomRange(0.2, 0.8);
+    this.radius = randomRange(0.5, 1.5);
+    this.opacity = randomRange(0.3, 0.8);
     this.twinkle = Math.random() * Math.PI * 2;
     this.twinkleSpeed = randomRange(0.005, 0.02);
   }
@@ -157,7 +175,7 @@ class BackgroundStar {
   }
   
   draw() {
-    const twinkleIntensity = Math.sin(this.twinkle) * 0.3 + 0.7;
+    const twinkleIntensity = Math.sin(this.twinkle) * 0.4 + 0.6;
     
     ctx.save();
     ctx.globalAlpha = this.opacity * twinkleIntensity;
@@ -209,16 +227,16 @@ class Meteor {
     
     this.length = randomRange(40, 100);
     this.opacity = 1;
-    this.fadeSpeed = randomRange(0.005, 0.01);
+    this.fadeSpeed = randomRange(0.003, 0.008);
     this.trail = [];
-    this.maxTrailLength = 15;
+    this.maxTrailLength = 12;
   }
   
   update() {
     this.x += this.vx;
     this.y += this.vy;
     
-    // Добавляем точку в след
+    // Добавляем точк�� в след
     this.trail.push({
       x: this.x,
       y: this.y,
@@ -275,7 +293,7 @@ class Meteor {
       ctx.globalAlpha = this.opacity;
       ctx.fillStyle = '#ffffff';
       ctx.shadowColor = '#ffffff';
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 8;
       
       ctx.beginPath();
       ctx.arc(head.x, head.y, 2, 0, Math.PI * 2);
@@ -292,6 +310,7 @@ function createBackgroundStars() {
   for (let i = 0; i < BACKGROUND_STARS_COUNT; i++) {
     backgroundStars.push(new BackgroundStar());
   }
+  debugLog(`Created ${BACKGROUND_STARS_COUNT} background stars`);
 }
 
 // Создание метеоритов
@@ -300,6 +319,7 @@ function createMeteors() {
   for (let i = 0; i < METEOR_COUNT; i++) {
     meteors.push(new Meteor());
   }
+  debugLog(`Created ${METEOR_COUNT} meteors`);
 }
 
 // Показ информационной подсказки
@@ -355,6 +375,8 @@ function showInfo(star, mouseX, mouseY) {
   infoPopup.style.left = left + 'px';
   infoPopup.style.top = top + 'px';
   infoPopup.classList.remove('hidden');
+  
+  debugLog(`Showing info for: ${star.title} at (${left}, ${top})`);
 }
 
 // Обработчики событий мыши
@@ -364,19 +386,21 @@ function handleMouseMove(e) {
   const mouseY = e.clientY - rect.top;
   
   let hoveredStar = null;
+  let foundHover = false;
   
   // Проверяем наведение на интерактивные звёзды
   stars.forEach(star => {
     if (star.isPointInside(mouseX, mouseY)) {
       star.hovered = true;
       hoveredStar = star;
+      foundHover = true;
       canvas.style.cursor = 'pointer';
     } else {
       star.hovered = false;
     }
   });
   
-  if (hoveredStar) {
+  if (foundHover && hoveredStar) {
     showInfo(hoveredStar, e.clientX, e.clientY);
   } else {
     showInfo(null);
@@ -390,6 +414,7 @@ function handleMouseLeave() {
   });
   showInfo(null);
   canvas.style.cursor = 'default';
+  debugLog('Mouse left canvas');
 }
 
 function handleClick(e) {
@@ -400,10 +425,13 @@ function handleClick(e) {
   // Проверяем клик по звёздам
   stars.forEach(star => {
     if (star.isPointInside(mouseX, mouseY)) {
+      debugLog(`Clicked on star: ${star.title}`);
+      
       // Если у звезды только одна ссылка, открываем её сразу
       if (star.links.length === 1) {
         window.open(star.links[0].url, '_blank');
       }
+      
       // Создаём эффект клика
       createClickEffect(mouseX, mouseY);
     }
@@ -412,6 +440,8 @@ function handleClick(e) {
 
 // Эффект клика
 function createClickEffect(x, y) {
+  debugLog(`Creating click effect at (${x}, ${y})`);
+  
   // Создаём временные частицы для эффекта
   for (let i = 0; i < 8; i++) {
     const angle = (i / 8) * Math.PI * 2;
@@ -426,6 +456,7 @@ function createClickEffect(x, y) {
     effect.length = 20;
     effect.opacity = 1;
     effect.fadeSpeed = 0.05;
+    effect.trail = [{ x: x, y: y, opacity: 1 }];
     
     meteors.push(effect);
   }
@@ -448,7 +479,7 @@ function animate() {
     star.draw();
   });
   
-  // Обновляем и рисуем метеориты
+  // Обновляем и рисуем метеориты (поверх звёзд)
   meteors.forEach(meteor => {
     meteor.update();
     meteor.draw();
@@ -463,31 +494,62 @@ function animate() {
 // Инициализация
 async function init() {
   try {
+    debugLog('Starting initialization...');
+    
+    // Проверяем наличие необходимых элементов
+    if (!canvas) {
+      throw new Error('Canvas element #stars-canvas not found');
+    }
+    if (!infoPopup) {
+      throw new Error('Info popup element #info-popup not found');
+    }
+    
+    debugLog('DOM elements found, loading stars data...');
+    
     // Загружаем данные звёзд
     const data = await loadJSON('data/stars.json');
     
     if (data && Array.isArray(data)) {
-      stars = data.map(starData => new InteractiveStar(starData));
+      debugLog(`Loaded ${data.length} stars from JSON`);
+      
+      // Создаём интерактивные звёзды
+      stars = data.map(starData => {
+        // Проверяем ��орректность данных
+        if (typeof starData.x !== 'number' || typeof starData.y !== 'number') {
+          console.warn('Invalid star coordinates:', starData);
+          return null;
+        }
+        if (starData.x < 0 || starData.x > 1 || starData.y < 0 || starData.y > 1) {
+          console.warn('Star coordinates out of range (0-1):', starData);
+        }
+        
+        return new InteractiveStar(starData);
+      }).filter(star => star !== null); // Удаляем некорректные звёзды
+      
+      debugLog(`Created ${stars.length} interactive stars`);
     } else {
-      console.warn('Не удалось загрузить данные звёзд, используем демо-данные');
+      console.warn('Failed to load stars data, using demo data');
+      
       // Демо-данные
       stars = [
         new InteractiveStar({
           x: 0.2, y: 0.3, type: 'contact',
-          title: 'Контакт', description: 'Свяжитесь со мной',
-          links: [{ text: 'Email', url: 'mailto:test@example.com' }]
+          title: 'Email', description: 'Свяжитесь со мной по почте',
+          links: [{ text: 'Написать', url: 'mailto:test@example.com' }]
         }),
         new InteractiveStar({
           x: 0.7, y: 0.4, type: 'tech',
-          title: 'Технологии', description: 'Мой технический стек',
+          title: 'JavaScript', description: 'Основной язык программирования',
           links: []
         }),
         new InteractiveStar({
           x: 0.5, y: 0.6, type: 'project',
-          title: 'Проект', description: 'Мой последний проект',
+          title: 'П��оект', description: 'Мой последний проект',
           links: [{ text: 'GitHub', url: 'https://github.com' }]
         })
       ];
+      
+      debugLog(`Created ${stars.length} demo stars`);
     }
     
     // Создаём фоновые звёзды и метеориты
@@ -502,13 +564,23 @@ async function init() {
     // Включаем pointer-events для canvas
     canvas.style.pointerEvents = 'auto';
     
+    debugLog('Event listeners attached, starting animation...');
+    
     // Запускаем анимацию
     animate();
     
-    console.log('Звёздное небо инициализировано:', stars.length, 'интерактивных звёзд');
+    debugLog('Initialization complete!');
     
   } catch (error) {
-    console.error('Ошибка инициализации звёздного неба:', error);
+    console.error('Error during initialization:', error);
+    
+    // Показываем ошибку пользователю
+    if (infoPopup) {
+      infoPopup.innerHTML = `<strong>Ошибка загрузки</strong><br>Не удалось загрузить звёздное небо: ${error.message}`;
+      infoPopup.style.left = '50px';
+      infoPopup.style.top = '100px';
+      infoPopup.classList.remove('hidden');
+    }
   }
 }
 
@@ -519,5 +591,9 @@ window.addEventListener('beforeunload', () => {
   }
 });
 
-// Запускаем инициализацию
-init();
+// Запускаем инициализацию после загрузки DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

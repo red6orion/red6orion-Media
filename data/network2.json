@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "server1",
+      "label": "Web Server",
+      "x": 0,
+      "y": -100,
+      "size": 3,
+      "color": "#4ecdc4"
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "x": -150,
+      "y": 0,
+      "size": 2.5,
+      "color": "#ff6b6b"
+    },
+    {
+      "id": "cache",
+      "label": "Redis Cache",
+      "x": 150,
+      "y": 0,
+      "size": 2,
+      "color": "#feca57"
+    },
+    {
+      "id": "loadbalancer",
+      "label": "Load Balancer",
+      "x": 0,
+      "y": 100,
+      "size": 2.5,
+      "color": "#45b7d1"
+    },
+    {
+      "id": "api1",
+      "label": "API Server 1",
+      "x": -80,
+      "y": -50,
+      "size": 2,
+      "color": "#96ceb4"
+    },
+    {
+      "id": "api2",
+      "label": "API Server 2",
+      "x": 80,
+      "y": -50,
+      "size": 2,
+      "color": "#96ceb4"
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring",
+      "x": 0,
+      "y": 200,
+      "size": 1.5,
+      "color": "#ff9f43"
+    },
+    {
+      "id": "backup",
+      "label": "Backup Server",
+      "x": -200,
+      "y": 50,
+      "size": 1.5,
+      "color": "#ff6b9d"
+    },
+    {
+      "id": "cdn",
+      "label": "CDN",
+      "x": 200,
+      "y": 50,
+      "size": 2,
+      "color": "#5f27cd"
+    }
+  ],
+  "links": [
+    {
+      "source": "loadbalancer",
+      "target": "server1"
+    },
+    {
+      "source": "server1",
+      "target": "api1"
+    },
+    {
+      "source": "server1",
+      "target": "api2"
+    },
+    {
+      "source": "api1",
+      "target": "database"
+    },
+    {
+      "source": "api2",
+      "target": "database"
+    },
+    {
+      "source": "api1",
+      "target": "cache"
+    },
+    {
+      "source": "api2",
+      "target": "cache"
+    },
+    {
+      "source": "database",
+      "target": "backup"
+    },
+    {
+      "source": "server1",
+      "target": "cdn"
+    },
+    {
+      "source": "loadbalancer",
+      "target": "monitoring"
+    },
+    {
+      "source": "server1",
+      "target": "monitoring"
+    },
+    {
+      "source": "database",
+      "target": "monitoring"
+    }
+  ]
+}
